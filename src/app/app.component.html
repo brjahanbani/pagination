@@ -1,12 +1,12 @@
 <div class="container">
   <div class="card text-center">
-    <img [src]=" images[currentPage].url" class="img-responsive img-center" style="max-width: 700px">
+    <img [src]=" images[currentPage].url" class="img-responsive img-center" style="max-width: 450px">
     <div class="card-body">
-      <h3 class="card-title">{{images[currentPage].title}}</h3>
+      <h3 appClass class="card-title">{{images[currentPage].title}}</h3>
     </div>
   </div><br>
   <nav aria-label="...">
-    <ul class="pagination pagination-lg justify-content-center">
+    <ul class="pagination justify-content-center">
 
       <li class="page-item" [ngClass]="{disabled: currentPage===0}">
         <a (click)="changePage()" class="page-link">Previous</a>
