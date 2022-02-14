@@ -32,10 +32,10 @@
   <!-- ng-switch  -->
   <div [ngSwitch]="currentPage">
     <div *ngSwitchCase="0">
-      This Page is Zero (ngSwitch)
+      <p appClass2 [backgroundColor]="'#0D6EFC'" [color]="'#FFFFFF'">This Page is Zero (ngSwitch)</p>
     </div>
     <div *ngSwitchCase="1">
-      This Page is One (ngSwitch)
+      <p>This Page is One (ngSwitch)</p>
     </div>
     <div *ngSwitchDefault>
       This Page is Default (ngSwitch)
