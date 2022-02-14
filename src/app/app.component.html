@@ -1,23 +1,44 @@
 <div class="container">
-  <div class="card center-block">
-    <img src="{{images[currentPage].url}}" class="card-img-top" style="max-width: 600px; max-height: 600px">
+  <div class="card text-center">
+    <img [src]=" images[currentPage].url" class="img-responsive img-center" style="max-width: 700px">
     <div class="card-body">
-      <h5 class="card-title">{{images[currentPage].title}}</h5>
+      <h3 class="card-title">{{images[currentPage].title}}</h3>
     </div>
-    <nav aria-label="...">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" [ngClass]="{disabled: currentPage===0}">
-          <a (click)="currentPage=currentPage-1" class="page-link">Previous</a>
-        </li>
+  </div><br>
+  <nav aria-label="...">
+    <ul class="pagination pagination-lg justify-content-center">
 
-        <li class="page-item" [ngClass]="setActiveClass(i)" *ngFor="let image of images; let i = index">
+      <li class="page-item" [ngClass]="{disabled: currentPage===0}">
+        <a (click)="changePage()" class="page-link">Previous</a>
+      </li>
+
+      <ng-container *ngFor="let image of images; let i = index">
+        <li class="page-item" *ngIf="checkWindowIndex(i)" [ngClass]="setActiveClass(i)">
           <a (click)="currentPage=i" class="page-link" href="#">{{i+1}}</a>
         </li>
+      </ng-container>
 
-        <li class="page-item" [ngClass]="{disabled: currentPage===images.length-1}">
-          <a (click)="currentPage=currentPage+1" class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav>
+      <li class="page-item" [ngClass]="{disabled: currentPage===images.length-1}">
+        <a (click)="currentPage=currentPage+1" class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- just for learning ELSE & ng-template  -->
+  <p *ngIf="isExist; else custom">Testing else & ng-template usage</p>
+  <ng-template #custom>
+    <p>ng-template called by #custom</p>
+  </ng-template>
+  <!-- ng-switch  -->
+  <div [ngSwitch]="currentPage">
+    <div *ngSwitchCase="0">
+      This Page is Zero (ngSwitch)
+    </div>
+    <div *ngSwitchCase="1">
+      This Page is One (ngSwitch)
+    </div>
+    <div *ngSwitchDefault>
+      This Page is Default (ngSwitch)
+    </div>
   </div>
 </div>
