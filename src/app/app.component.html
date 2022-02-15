@@ -10,7 +10,8 @@
 
       <!-- [ngClass]="{disabled: currentPage===0}" -->
       <li class="page-item" [appSetClass]="{disabled : currentPage===0}">
-        <a (click)="changePage()" class="page-link">Previous</a>
+        <a [ngStyle]="{backgroundColor : currentPage===0 ? '#E5E5E5' : '#FFFFFF'}" (click)="changePage()"
+          class="page-link">Previous</a>
       </li>
 
       <!-- [ngClass]="setActiveClass(i)" -->
@@ -22,7 +23,8 @@
 
       <!-- [ngClass]="{disabled: currentPage===images.length-1}" -->
       <li class="page-item" [appSetClass]="{disabled : currentPage===images.length-1}">
-        <a (click)="currentPage=currentPage+1" class="page-link" href="#">Next</a>
+        <a [ngStyle]="{backgroundColor : currentPage===images.length-1 ? '#E5E5E5' : '#FFFFFF'}"
+          (click)="currentPage=currentPage+1" class="page-link" href="#">Next</a>
       </li>
     </ul>
   </nav>
