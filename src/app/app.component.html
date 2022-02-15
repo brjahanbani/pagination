@@ -8,17 +8,20 @@
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
 
-      <li class="page-item" [ngClass]="{disabled: currentPage===0}">
+      <!-- [ngClass]="{disabled: currentPage===0}" -->
+      <li class="page-item" [appSetClass]="{disabled : currentPage===0}">
         <a (click)="changePage()" class="page-link">Previous</a>
       </li>
 
+      <!-- [ngClass]="setActiveClass(i)" -->
       <ng-container *ngFor="let image of images; let i = index">
-        <li class="page-item" *ngIf="checkWindowIndex(i)" [ngClass]="setActiveClass(i)">
+        <li class="page-item" *ngIf="checkWindowIndex(i)" [appSetClass]="{active : i===currentPage}">
           <a (click)="currentPage=i" class="page-link" href="#">{{i+1}}</a>
         </li>
       </ng-container>
 
-      <li class="page-item" [ngClass]="{disabled: currentPage===images.length-1}">
+      <!-- [ngClass]="{disabled: currentPage===images.length-1}" -->
+      <li class="page-item" [appSetClass]="{disabled : currentPage===images.length-1}">
         <a (click)="currentPage=currentPage+1" class="page-link" href="#">Next</a>
       </li>
     </ul>
@@ -29,6 +32,7 @@
   <ng-template #custom>
     <p>ng-template called by #custom</p>
   </ng-template>
+
   <!-- ng-switch  -->
   <div [ngSwitch]="currentPage">
     <div *ngSwitchCase="0">
