@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { ClassDirective } from './class.directive';
 import { Class2Directive } from './class2.directive';
 import { SetClassDirective } from './set-class.directive';
+import { TimesDirective } from './times.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClassDirective,
     Class2Directive,
-    SetClassDirective
+    SetClassDirective,
+    TimesDirective
   ],
   imports: [
     BrowserModule
